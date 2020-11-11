@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% from 'helpers/_forms.html' import render_field %}
+
+{% block container %}
+<div class="col-md-4 col-md-offset-6">
+	<center><h3>Registro de Tareas</h3></center>
+	<form class="form-control" method="post">
+
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+		<div class="form-group">
+			<center><a class=""></a>{{ render_field(form.title, class='form-control', placeholder='Titulo') }}</center>
+		</div>
+
+		<div class="form-group">
+			<center><a class="icon-write"></a>{{ render_field(form.description, class='form-control', placeholder='Descripcion') }}
+		</div>	
+
+	<center><button type="submit" name="button" class="btn btn-primary">Registrar tarea</button></center>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block container %}
+<div class="d-inline-bl">
+<h2>Listado de: {{ usern }} </h2>
+
+<div class="card">
+	<div class="card-body">
+		<center><h5 class="card-title">{{ task.title }}</h5></center>
+		<center><p class="card-text">{{ task.description }}</p></center>
+	</div>
+</div>
+	{% if current_user.is_authenticated and task.user_id == current_user.id %}
+		<center><a class="page-link" href="{{ url_for('.edit_task', task_id=task.id) }}">Editar</a></center>
+		<center><a class="page-link" href="{{ url_for('.sended_task', task_id=task.id) }}">Solicitar</a></center>
+		<center><a onclick="myFunction()" class="page-link">Eliminar</a>
+<script>
+function myFunction(){
+  if (confirm("¿Esta seguro que quiere eliminar esta tarea?")) {
+    window.location="{{ url_for('.delete_task', task_id=task.id) }}"
+  } else {
+    window.location="{{ url_for('.tasks') }}"
+  }
+}
+</script>
+		</center>
+	{% endif %}
+</div>
+{% endblock %}

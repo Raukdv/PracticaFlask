@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% from 'helpers/_forms.html' import render_field %}
+
+{% block container %}
+<div class="col-md-4 col-md-offset-6">
+	<center><h3>Login</h3></center>
+	<form class="form-control" method="post">
+
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+		<div class="form-group">
+			<center><a class="icon-use"></a>{{ render_field(form.username, class='form-control', placeholder='Usuario') }}</center>
+		</div>
+
+		<div class="form-group">
+			<center><a class="icon-saw"></a>{{ render_field(form.password, class='form-control', placeholder='Contraseña') }}
+			<small id="" class="form-text text-muted">Recuerde no compartir su contraseña con nadie ;)</small></center>
+		</div>	
+
+	<center><button type="submit" name="button" class="btn btn-primary">Login</button></center>
+	</form>
+</div>
+{% endblock %}
